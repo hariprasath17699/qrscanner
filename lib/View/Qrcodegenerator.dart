@@ -27,13 +27,14 @@ class _QrcodegeneratorState extends State<Qrcodegenerator> {
                 text = qrtext.text;
               });
             }),
+            text.isNotEmpty?
             Center(
               child: QrImageView(
                 data: text,
                 version: QrVersions.auto,
                 size: 200.0,
               ),
-            ),
+            ):Text("Text is empty")
           ],
         ),
       ),
