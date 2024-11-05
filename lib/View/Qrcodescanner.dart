@@ -16,7 +16,7 @@ class Qrcodescanner extends StatefulWidget {
 
 class _QrcodescannerState extends State<Qrcodescanner> {
 permissioncheck()async{
-  var status = await Permission.camera.status;
+  var status = await Permission.camera.status;//logic to check the camera permission
   if(status.isDenied){
     return false;
   }else{
@@ -31,7 +31,7 @@ permissioncheck()async{
           children: [
         Center(
           child:
-      permissioncheck()==true?
+      permissioncheck()==true?//checking the camera permission
           QRCodeDartScanView(
             scanInvertedQRCode: true, // enable scan invert qr code ( default = false)
             typeScan: TypeScan.live, // if TypeScan.takePicture will try decode when click to take a picture(default TypeScan.live)

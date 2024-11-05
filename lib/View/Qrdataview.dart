@@ -14,7 +14,7 @@ class _QrdataviewState extends State<Qrdataview> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(widget.qrtext),
+        child: Text(widget.qrtext),//showing the text in qr
       ),
     );
   }
