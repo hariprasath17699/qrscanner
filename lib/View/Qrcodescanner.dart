@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_code_dart_scan/qr_code_dart_scan.dart';
 
 import 'Qrdataview.dart';
@@ -14,6 +15,14 @@ class Qrcodescanner extends StatefulWidget {
 }
 
 class _QrcodescannerState extends State<Qrcodescanner> {
+permissioncheck()async{
+  var status = await Permission.camera.status;
+  if(status.isDenied){
+    return false;
+  }else{
+    return true;
+  }
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,13 +30,15 @@ class _QrcodescannerState extends State<Qrcodescanner> {
         child: Column(
           children: [
         Center(
-          child: QRCodeDartScanView(
+          child:
+      permissioncheck()==true?
+          QRCodeDartScanView(
             scanInvertedQRCode: true, // enable scan invert qr code ( default = false)
             typeScan: TypeScan.live, // if TypeScan.takePicture will try decode when click to take a picture(default TypeScan.live)
             onCapture: (Result result) {
 Navigator.push(context, MaterialPageRoute(builder: (context)=>Qrdataview(qrtext: result.text,)));
             },
-          ),
+          ):Text("Please give the proper permission")
         ),
           ],
         ),
