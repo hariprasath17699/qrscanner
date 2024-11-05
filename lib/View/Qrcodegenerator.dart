@@ -9,8 +9,8 @@ class Qrcodegenerator extends StatefulWidget {
 }
 
 class _QrcodegeneratorState extends State<Qrcodegenerator> {
-  TextEditingController qrtext = TextEditingController();
-  String text = "";
+  TextEditingController qrtext = TextEditingController();//creating a controller for text
+  String text = ""; //assigning the text
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class _QrcodegeneratorState extends State<Qrcodegenerator> {
                 text = qrtext.text;
               });
             }),
-            text.isNotEmpty?
+            text.isNotEmpty?//checking the text is empty or not
             Center(
               child: QrImageView(
                 data: text,
